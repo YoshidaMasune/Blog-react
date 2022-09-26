@@ -17,7 +17,7 @@ const Link_li = (...routes) => {
 function Navbar() {
   return (
     <>
-      <nav className='bg-blue-300 flex justify-between items-center h-10 px-80'>
+      <nav className='bg-blue-300 flex justify-between items-center h-10 px-4 md:px-70 sm:px-5 lg:px-80'>
         <Link to="/" className="logo">
           <img src="https://cdn-icons-png.flaticon.com/128/1/1905.png" alt="blog icons" className='w-[30px]' />
         </Link>
