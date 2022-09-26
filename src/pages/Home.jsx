@@ -1,4 +1,5 @@
 import React from 'react'
+import Blogs from '../components/Blogs'
 import Navbar from '../components/Navbar'
 
 function Home() {
@@ -6,7 +7,7 @@ function Home() {
     <>
       <Navbar />
       <div className="container">
-        <h1>Home</h1>
+        <Blogs />
       </div>
     </>
   )
