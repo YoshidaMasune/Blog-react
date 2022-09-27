@@ -11,20 +11,19 @@ import AddBlog from './pages/Addblog'
 const AppContext = createContext();
 
 function App() {
-  const [loginState, setLoginState] = useState(false);
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setLoginState(true);
-    }else{
-      setLoginState(auth)
-    }
-  })
+  const [loginState, setLoginState] = useState();
   useEffect( () => {
-
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setLoginState(true);
+      }else{
+        setLoginState(false)
+      }
+    })
   }, [])
   return (
-    <div className="App">
-      <AppContext.Provider value={{"loginState": loginState}} >
+    <div className="App min-h-screen flex flex-col justify-between">
+      <AppContext.Provider value={{"loginState": loginState, auth: auth}} >
         <Routes>
           <Route path='/' element={ <Home />} />
           <Route path='/login' element={ <Login /> } />

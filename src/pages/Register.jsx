@@ -4,6 +4,7 @@ import { auth } from "../fireBase-config"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 import Container from '../components/layout/Container'
 import FormControl from '../components/layout/FormControl'
+import Footer from '../components/Footer'
 
 function Register() {
 
@@ -12,10 +13,18 @@ function Register() {
     const email = e.target.email.value;
     const password = e.target.password.value
     createUserWithEmailAndPassword(auth, email, password)
+    .then( () => {
+      window.location = '/'
+    })
+    .catch( err => {
+      alert(err)
+      window.location = "/register"
+    })
   }
 
   return (
     <>
+      <main>
       <Navbar />
       <Container>
         <form onSubmit={register} className='mt-10 border w-fit mx-auto px-2 sm:p-5 lg:px-10 rounded-lg flex flex-col items-center '>
@@ -42,6 +51,9 @@ function Register() {
           </FormControl>
         </form>
       </Container>
+      </main>
+
+      <Footer />
     </>
   )
 }

@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../components/layout/Container'
 import Navbar from '../components/Navbar'
 import FormControl from '../components/layout/FormControl'
+import { redirect } from 'react-router-dom'
 
+// Text Editor <CKEditor>
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-import { db } from '../fireBase-config';
+// FireBase
+import { db, auth } from '../fireBase-config';
 import { addDoc, collection } from '@firebase/firestore';
+import Footer from '../components/Footer';
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 
 const topics_func = (...topics) => {
   return topics.map( topic => {
@@ -26,6 +31,7 @@ function Addblog() {
   const editorConfiguration = {
     // toolbar: [ 'bold', 'italic' ]
   };
+
   const createBlog = async (e) => {
     e.preventDefault();
     await addDoc(blogsRef, {blog,headLine,topic})
@@ -33,10 +39,21 @@ function Addblog() {
     .catch( err => alert(err))
   }
 
+  useEffect( () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user){
+        
+      }else {
+        window.location = "/login"
+      }
+    })
+  }, [])
+
   return (
     <>
+      <main>
       <Navbar />
-        <Container style={`w-3/4 h-screen`}>
+        <Container style={`w-3/4 `}>
           <form onSubmit={createBlog}>
             <h2>Create Your Blog</h2>
             <div className="">
@@ -82,6 +99,9 @@ function Addblog() {
             </FormControl>
           </form>
         </Container>
+      </main>
+
+      <Footer />
     </>
   )
 }

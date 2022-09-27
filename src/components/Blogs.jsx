@@ -32,12 +32,13 @@ function Blogs() {
 
   return (
     <>
-      <Container style="w-3/4 mt-10">
-        <header>
-          <h2 className='text-4xl'>Blogs</h2>
+      <Container style="w-3/4">
+        <header className='border-b-2'>
+          <h2 className='text-4xl mt-10 text-slate-800 font-black'>Blogs</h2>
+          <p className='indent-8 pt-3'>เรื่องราวของการเดินทาง</p>
         </header>
-        <div className="mt-10 flex flex-col items-center gap-5">
-          <div className="flex flex-col gap-10">
+        <div className="mt-10 mx-2 sm:ml-10">
+          <div className="grid gap-x-5 grid-cols-1 sm:grid-cols-2">
             {checkBlogs(blogs)}
           </div>
         </div>
