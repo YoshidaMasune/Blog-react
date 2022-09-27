@@ -1,8 +1,18 @@
-import React from 'react'
 
-function Blog() {
+import React from 'react'
+import Navbar from './Navbar'
+
+function Blog(props) {
+
+  const { blog } = props;
+  console.log(blog.blog.slice(1, blog.blog.length - 1))
   return (
-    <div>Blog</div>
+    <>
+      <article>
+        <h2>{blog.headLine}</h2>
+        <section dangerouslySetInnerHTML={{__html: blog.blog}} />
+      </article>
+    </>
   )
 }
 
