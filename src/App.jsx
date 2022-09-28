@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login'
 import Register from './pages/Register'
 import AddBlog from './pages/Addblog'
+import DisplayBlog from './pages/DisplayBlog';
 
 const AppContext = createContext();
 
@@ -29,6 +30,7 @@ function App() {
           <Route path='/login' element={ <Login /> } />
           <Route path='/register' element={ <Register /> } />
           <Route path='/addBlog' element={ <AddBlog /> } />
+          <Route path='/blog/:id' element={ <DisplayBlog /> } />
         </Routes>
       </AppContext.Provider>
     </div>
